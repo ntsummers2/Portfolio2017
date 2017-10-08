@@ -11,8 +11,10 @@
         </nav>
       </header>
       <div class="me">
-        <h1 class="heading">Nicholas Summers</h1>
-        <h2 class="tagline">Coder, Designer, UX + Accessibility Specialist.</h2>
+        <div>
+          <h1 class="heading">Nick Summers</h1>
+          <h2 class="tagline">Developer, Designer, Lorem Ipsum</h2>
+        </div>
       </div>
     </section>
     <section class="work-container">
@@ -23,7 +25,6 @@
           <li></li>
           <li></li>
           <li></li>
-          <div class="clear"></div>
         </ul>
       </div>
     </section>
@@ -45,9 +46,7 @@ export default {
 
 @import "../assets/styles/main";
 
-#index { width: 100%; height: 100%;}
-
-.clear { clear: both; }
+#index { width: 100%; height: 100%; }
 
 .landing-container {
   background: #ffffff; /* Old browsers */
@@ -60,11 +59,15 @@ export default {
 
   position: relative;
 
-  padding: 20px;
+  padding: 20px 40px;
 
   box-sizing: border-box;
 
+  display:flex;
+  flex-direction: column;
+
   header {
+    width: 100%; height: 60px;
     nav {
       ul {
         display: flex;
@@ -96,24 +99,41 @@ export default {
   }
 
   .me {
-    position: absolute;
+    display: flex;
+    flex-grow: 1;
 
-    bottom: 120px; left: 120px;
+    transition: all .5s;
+
+    position: relative;
+    div {
+      position: absolute;
+      bottom: 0; left: 0;
+
+      margin: 0 0 40px 0;
+    }
 
     .heading {
-      font: 5.5vw $oswald;
+      font: 60px $oswald;
+      @include bp (lg) { font-size: 76px; }
+      @include bp (xxlg) { font-size: 90px; }
 
       color: #333;
 
       margin: 0; padding: 0;
+
+      transition: all .5s;
     }
 
     .tagline {
-      font: 3vw $roboto;
+      font: 32px $roboto;
+      @include bp (lg) { font-size: 48px; }
+      @include bp (xxlg) { font-size: 60px; }
 
       color: #333;
 
       margin: 0; padding: 0;
+
+      transition: all .5s;
     }
   }
 }
@@ -124,20 +144,17 @@ export default {
   padding: 60px 40px;
 
   h1 {
-    margin: 0 auto 60px auto; padding: 0;
+    margin: 0 auto 40px auto; padding: 0;
 
     color: #fff;
 
     font: 60px $roboto;
+    @include bp(lg) { font-size: 80px; }
 
-    text-align: right;
-
-    max-width: 1600px;
+    text-align: left;
   }
 
   .projects {
-
-    max-width: 1600px;
 
     margin: 0 auto; padding: 0;
 
@@ -146,12 +163,17 @@ export default {
 
       list-style-type: none;
 
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
       li {
-        width: 24.25%; height: 700px;
+        width: 100%; height: 400px;
+        @include bp(md) { width: 48%; height: 500px; }
+        @include bp(lg) { width: 32.3333%; height: 600px; }
+        @include bp(xxlg) { width: 24.25%; height: 700px; }
 
-        display: block; float: left;
-
-        margin-right: 1%;
+        margin: 20px 0 0 0;
 
         position: relative;
 
@@ -167,12 +189,19 @@ export default {
         &:after {
           transition: all .2s ease;
           opacity: 0;
+
           content: "";
           display: block;
+
           color: #fff;
-          font: 100px $oswald;
+          font-family: $oswald;
+
           position: absolute;
-          bottom: -29px; right: 0;
+          right: 0;
+
+          font-size: 60px; bottom: -16px;
+          @include bp(md) { font-size: 80px; bottom: -22px; }
+          @include bp(xxlg) { font-size: 100px; bottom: -28px; }
         }
 
         &:hover {
